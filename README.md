@@ -1,5 +1,7 @@
 #Welcome to Sakhi
 
+please try the master branch
+
 <a href="https://studio.firebase.google.com/import?url=https%3A%2F%2Fgithub.com%2Fprabhmeharbedi%2Fmu">
   <picture>
     <source
