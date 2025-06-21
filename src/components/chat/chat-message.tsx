@@ -1,5 +1,7 @@
 import { cn } from "@/lib/utils";
 import { ChatAvatar } from "./chat-avatar";
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 interface ChatMessageProps {
   role: 'user' | 'assistant' | 'system';
@@ -33,7 +35,17 @@ export function ChatMessage({ role, content, isLoading }: ChatMessageProps) {
             <span className="h-2 w-2 bg-muted-foreground rounded-full animate-bounce" />
           </div>
         ) : (
-          <p className="whitespace-pre-wrap font-body leading-relaxed">{content}</p>
+          <ReactMarkdown
+            className="font-body leading-relaxed"
+            remarkPlugins={[remarkGfm]}
+            components={{
+              p({ node, ...props }) { return <p className="mb-0 last:mb-0" {...props} /> },
+              ul({ node, ...props }) { return <ul className="list-disc list-inside space-y-1 pl-2" {...props} /> },
+              strong({ node, ...props }) { return <strong className="font-bold" {...props} /> },
+            }}
+          >
+            {content}
+          </ReactMarkdown>
         )}
       </div>
     </div>
