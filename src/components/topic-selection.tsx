@@ -27,10 +27,10 @@ export function TopicSelection({ topics, onSelect }: TopicSelectionProps) {
                 <h1 className="font-headline text-6xl text-primary">Sakhi</h1>
             </div>
             <p className="font-body text-2xl max-w-md mx-auto mt-4">
-              Your safe space to talk about <span className="text-primary font-semibold">anything</span> and <span className="text-primary font-semibold">everything</span>.
+              Every conversation is a journey. Let's take the first step, <span className="text-primary font-semibold">together</span>.
             </p>
             <p className="font-body text-lg text-muted-foreground max-w-sm mx-auto mt-6">
-              I'm your AI bestie, here to listen without judgment. So, what's on your mind today, pyaari?
+              I'm here to be your friend and guide, listening with care. Tell me, what's on your heart today, pyaari?
             </p>
         </div>
       </div>
