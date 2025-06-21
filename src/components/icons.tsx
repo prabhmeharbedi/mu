@@ -52,8 +52,8 @@ export const SakhiLogo = () => (
     <path d="M40 56.6667C47.2333 56.6667 53.0333 50.8667 53.0333 43.6333H26.9667C26.9667 50.8667 32.7667 56.6667 40 56.6667Z" fill="white"/>
     <defs>
       <linearGradient id="paint0_linear_1_123" x1="6.66675" y1="40" x2="73.3334" y2="40" gradientUnits="userSpaceOnUse">
-        <stop stopColor="#FF7F50"/>
-        <stop offset="1" stopColor="#FFC3A0"/>
+        <stop stopColor="#FFB8C6"/>
+        <stop offset="1" stopColor="#FC8DA5"/>
       </linearGradient>
     </defs>
   </svg>
