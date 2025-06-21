@@ -49,6 +49,7 @@ export default function SakhiApp() {
   });
   const [isLoading, setIsLoading] = useState(false);
   const [view, setView] =useState<'topics' | 'chat'>('topics');
+  const [selectedTopicId, setSelectedTopicId] = useState<string | null>(null);
   const [recommendedTopic, setRecommendedTopic] = useState<{ topic: string, reason: string } | null>(null);
   const { toast } = useToast();
 
@@ -78,7 +79,7 @@ export default function SakhiApp() {
     setIsLoading(true);
     setRecommendedTopic(null);
 
-    const res = await getAiResponse({ messages: newMessages, userProfile });
+    const res = await getAiResponse({ messages: newMessages, userProfile, topicId: selectedTopicId });
 
     if (res.error) {
       toast({
@@ -100,6 +101,7 @@ export default function SakhiApp() {
   };
   
   const handleTopicSelect = (topic: Topic) => {
+    setSelectedTopicId(topic.id);
     setMessages([]);
     setView('chat');
     sendMessage(topic.initialQuestion);
@@ -108,6 +110,7 @@ export default function SakhiApp() {
   const handleBackToTopics = () => {
     setView('topics');
     setMessages([]);
+    setSelectedTopicId(null);
     setRecommendedTopic(null);
   };
 

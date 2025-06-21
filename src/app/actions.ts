@@ -16,15 +16,16 @@ const actionSchema = z.object({
     location: z.string(),
     language: z.string(),
   }),
+  topicId: z.string().nullable(),
 });
 
-export async function getAiResponse(input: { messages: Message[]; userProfile: UserProfile }) {
+export async function getAiResponse(input: { messages: Message[]; userProfile: UserProfile, topicId: string | null }) {
   const validatedInput = actionSchema.safeParse(input);
   if (!validatedInput.success) {
     return { error: 'Invalid input.' };
   }
 
-  const { messages, userProfile } = validatedInput.data;
+  const { messages, userProfile, topicId } = validatedInput.data;
   
   // Ensure there's at least one user message to process
   const lastUserMessage = [...messages].reverse().find(m => m.role === 'user');
@@ -43,7 +44,8 @@ export async function getAiResponse(input: { messages: Message[]; userProfile: U
           age: userProfile.age,
           location: userProfile.location,
           language: userProfile.language
-        }
+        },
+        topicId: topicId ?? undefined,
       }),
       recommendNextTopic({
         currentTopic: currentQuestion,
